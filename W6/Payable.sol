@@ -2,10 +2,15 @@
 pragma solidity ^0.8.7;
 
 contract Payable {
+   address payable public owner;
 
-    function deposit() external{
-       
-       
+    constructor(){
+        owner = payable(msg.sender);
     }
 
+    function deposit() external payable{} //to get ether
+
+    function getBalance() external view returns (uint){
+        return address(this).balance;
+    }
 }
